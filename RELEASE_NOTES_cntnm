@@ -1,20 +1,7 @@
-
-28 May 2004
-
-1) Made a correction for to the input units for the path length
-   (S.A. Clough)
-
-2) Allows for the input of water VMR "with respect to total air, not dry air"
-   (S.A. Clough)
-
-3) Made the code cosistent with the continuum in LBLRTM_v_8.4
-   (S.A. Clough)
-
+ 
 ************************************************************************
 
-11 February 2003
-
-Release Notes for MT_CKD_1.00
+Release Notes for MT_CKD
 
 
 Prepared by S. A. Clough, 
@@ -24,6 +11,29 @@ Prepared by S. A. Clough,
             Lexington,  MA  02421
 
             clough@aer.com 
+
+************************************************************************
+
+MT_CKD_1.1
+
+Date: 6 August 2004
+
+
+MT_CKD_1.1 represents a modification of MT_CKD_1.0 for which the foreign
+water vapor continuum in the 250 - 550 cm-1 range have been modified to
+provide results consistent with CKD_2.4.1 in this spectral region.
+
+The input water vapor mixing ratio is now interpreted as the mixing ratio 
+with respect to DRY air.
+
+The name of the output files have been modified slightly to
+WATER.coeff and CNTNM.optdpt 
+
+
+MT_CKD_1.0
+
+
+Date: 11 February 2003
 
 This is the initial release of the MT_CKD water vapor continuum and
 represents the  first recomputation of the entire self and foreign
@@ -60,28 +70,29 @@ D.C. Tobin and S.A. Clough building on the original CKD formulation; hence
 the name MT_CKD.
 
 
-In this release only the stand alone program, 
+For this release of the continuum model, the stand alone program, 
 
-                  cntnm_progr_mt_ckd_1.00.f      
+                  cntnm_progr.f      
 
-is being provided. The driver for this program has been changed slightly so 
-that pressure, temperature and path length may be entered as input.  A 
-negative value for the pressure provides a default result from 
-0 - 5000 cm-1 with P = 1013 mb, T = 296 k and X (path) = 1 cm.
+is being provided. 
 
+The driver for this program enables input of the follwing pat variables: 
+pressure, temperature path length and water vapor volume mixing ratio.  
+A negative value for the pressure provides a default result from 
+0 - 5000 cm-1 with P = 1013 mb, T = 296 k,  X (path) = 1 cm and vmr_h2o = 0.01.
 
-In addition to the original version of ckd_0, there are three updated versions 
+In addition to the original version of ckd_0, there are three archived versions 
 of ckd available with the release dates indicated:
 
-ckd_2.4.2     2002_08
+ckd_2.4.2     2002_01        $Revision: 5.17
 
-ckd_2.4.1     2000_05
+ckd_2.4.1     2000_04        revision:  5.12
 
-ckd_2.2.2     1996_12; rev 1999_06
+ckd_2.2.2     1999_06        revision:  3.12
+
+ckd_2.2       1996_03        revision:  3.7
 
 ckd_0         1989
-
-ckd_2.2.2     1996_12; rev 1999_06
 
 These models with associated readme files are contained in the directories 
 associated with the continuum.  Information on the nature of the modifications 
