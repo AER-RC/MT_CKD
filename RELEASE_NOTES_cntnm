@@ -1,7 +1,18 @@
- 
+
+28 May 2004
+
+1) Made a correction for to the input units for the path length
+   (S.A. Clough)
+
+2) Allows for the input of water VMR "with respect to total air, not dry air"
+   (S.A. Clough)
+
+3) Made the code cosistent with the continuum in LBLRTM_v_8.4
+   (S.A. Clough)
+
 ************************************************************************
 
- 11 February 2003
+11 February 2003
 
 Release Notes for MT_CKD_1.00
 
