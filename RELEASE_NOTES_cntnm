@@ -14,6 +14,20 @@ Prepared by S. A. Clough,
 
 ************************************************************************
 
+MT_CKD_1.2
+
+Date: 22 September 2004
+
+
+MT_CKD_1.2 includes a modification to the collision induced absorption by 
+N2 in the 0-350 cm-1 regime, Boissoles et al. (2003).
+
+The structure of cntnm_progr.f has been altered somewhat to ensure closer
+correlation betweem this continuum program and the continuum used in lblrtm.
+The actual continuum module, contnm.f, is introduced into the present program
+with an include statement.  The contnm.f module is that archived with lblrtm.
+
+
 MT_CKD_1.1
 
 Date: 6 August 2004
@@ -177,8 +191,17 @@ Clough, S.A., F.X. Kneizys, R. Davis, R. Gamache and R. Tipping:
 
 _______________________________________________________________________Y
 
-ADDITIONAL REFERENCES OF POTENTIAL INTEREST INCLUDE:
+ADDITIONAL REFERENCES RELEVENT TO THIS CONTINUUM MODEL INCLUDE:
 
+
+Boissoles, J., C. Boulet, R.H. Tipping, A. Brown and Q. Ma, 
+     Theoretical CAlculations of the Translation-Rotation 
+     Collision-Induced Absorption in N2-N2, O2-O2 and N2-O2 Pairs, 
+     J.Quant. Spec. Rad. Transfer, 82,505 (2003).
+
+Mate,B., C. Lugez, G.T. Fraser, and W.J. Lafferty (1999): 
+     Absolute Intensities for the O2 1.27 micron continuum absorption,
+     J. Geophys. Res., 104, 30,585-30,590. 
 
 Clerbaux, C., P. Chazette, J. Hadji-Lazaro, G. Megie,J.-F. Moeller
      and S. A. Clough, Remote sensing of CO, CH4 and O3 using a
@@ -195,10 +218,19 @@ Moncet, J.-L. and S.A. Clough (1997): Accelerated monochromatic
      a new model to spectral radiance observations. J. Geophys.
      Res., 102, 21,853-21,866.
 
+Mlawer,E.J., S.A. Clough.,P.D. Brown, Stephen, Landry, Goldman, & Murcray (1997):
+     Observed  Atmospheric  Collision Induced Absorption in Near Infrared
+     Oxygen Bands,  Journal of Geophysical Research.
+
 Mlawer, E.J., S.J. Taubman, P.D. Brown, M.J. Iacono and S.A.
      Clough (1997):  Radiative Transfer for Inhomogeneous
      Atmospheres:  RRTM, a Validated correlated-k model for the
      longwave. J. Geophys. Res.,102, 16,663-16,682.
+
+Lafferty, W.J., A.M. Solodov,A. Weber, W.B. Olson and J._M. Hartmann (1996):
+     Infrared collision-induced absorption by N2 near 4.3 microns
+     for atmospheric applications: Measurements and emprirical modeling, 
+     Appl. Optics, 35, 5911-5917'
 
 Iacono, M.J. and S.A. Clough  (1996): Application of infrared
      interferometer spectrometer clear sky spectral radiance to
@@ -220,10 +252,18 @@ Clough, S.A., M.J. Iacono, J.-L. Moncet (1992): Line-by-Line
      Application to Water Vapor.  J. Geophys. Res., 97, 15761-
      15785.
 
+Greenblatt,G.D., J.J. Orlando, J.B. Burkholder, and A.R. Ravishabkara (1990):
+     Absorption Coefficients of Oxygen Between 330 and 1140 nm,   
+     J. Geophys. Res., 95, 18577-18582. 
+
 Kneizys, F.X., E.P.Shettle, L.W. Abreu, J.H. Chetwynd, Jr., G.P. 
      Anderson, W.O. Gallery, J.E.A. Selby, S.A. Clough and R.W. Fenn
      (1988):  USERS GUIDE TO LOWTRAN7, AFGL-TR-88-0177.
   
+Borysow, A, and L. Frommhold, "Collision-induced rototranslational absorption 
+     spectra of N2-N2 pairs for temperatures from 50 to 300 K", 
+     The Astrophysical Journal, 311, 1043-1057, 1986.
+
 Kneizys, F.X., E.P.Shettle, W.O. Gallery, J.H. Chetwynd, Jr.,
      L.W. Abreu,  J.E.A. Selby, S.A. Clough and R.W. Fenn (1983):
      ATMOSPHERIC TRANSMITTANCE/RADIANCE: COMPUTER CODE LOWTRAN6",
@@ -231,48 +271,52 @@ Kneizys, F.X., E.P.Shettle, W.O. Gallery, J.H. Chetwynd, Jr.,
 
 ************************************************************************
 
-0  *****  CONTINUA mt_ckd_1.00                                                                        
-                                                                                                      
-                     H2O   SELF  (T)      0 - 20000 CM-1    mt_ckd_1.0                (December 2002) 
-                           AIR   (T)      0 - 20000 CM-1    mt_ckd_1.0                (December 2002) 
-                     CO2   AIR            0 - 20000 CM-1    co2 nu2 increased * 7         (July 2002) 
-                     N2    SELF           0 -   350 CM-1    BORYSOW FROMMHOLD                         
-                           AIR         2085 -  2670 CM-1                                 (March 1998) 
-                     O2    AIR   (T)   1340 -  1850 CM-1                                 (March 1998) 
-                           O2/N2       7550 -  8486 CM-1                              (February 2000) 
-                           AIR         9100 - 11000 CM-1                                (August 1999) 
-                           O2         15000 - 29870 CM-1                                  (May  2000) 
-                           O2/N2      36000 -  >>>> CM-1    HERZBERG                                  
-                     O3    AIR         9170 - 24565 CM-1    CHAPPUIS / WULF                           
-                                 (T)  27370 - 40800 CM-1    HARTLEY HUGGINS                           
-                                      40800 - 54000 CM-1    HARTLEY HUGGINS                           
-                                                                                                      
-                                                                                                      
-                                                                                                      
-  H2O SELF HAS BEEN REDUCED IN THE 800-1200 CM-1 REGION                                 (01 SEPT 1985)
-  03       TEMPERATURE DEPENDENCE HAS BEEN CORRECTED                                     (01 MAY 1987)
-  02       (1390-1760) HAS BEEN REDUCED (FACTOR = 0.78)                                (07 MARCH 1990)
-  H2O SELF HAS BEEN REDUCED IN THE 1100-1500 CM-1 REGION                               (01 APRIL 1993)
-  H2O FOREIGN HAS BEEN REDUCED AT ~1300 CM-1 AND IN ALL THE WINDOW REGIONS             (01 APRIL 1993)
-  H2O SELF HAS BEEN MODIFIED IN THE 700-1500 CM-1 REGION                                 (01 MAY 1994)
-  H2O FOREIGN HAS BEEN MODIFIED IN THE ENTIRE 1200-2200 CM-1 SPECTRAL RANGE              (01 MAY 1994)
-  H2O SELF HAS BEEN INCREASED 30% IN THE MICROWAVE REGION                                (09 FEB 1996)
-  N2 COLLISION INDUCED PURE ROTATION BAND ADDED                                          (09 FEB 1996)
-  O3 CHAPPUIS CHANGED TO VALUES FROM MODTRAN3                                            (09 FEB 1996)
-  INTERPOLATION EFFECTS BETWEEN HARTLEY HUGGINS DATA AROUND 40800 CM-1                  (18 SEPT 1996)
-  O2 COLLISION INDUCED FUNDAMENTAL BAND (1340-1850 CM-1) CHANGED TO THIBAULT ET AL., 1996 (MARCH 1998)
-  N2 COLLISION INDUCED FUNDAMENTAL BAND (2085-2670 CM-1) CHANGED TO LAFFERTY ET AL., 1996 (MARCH 1998)
-  H2O FOREIGN HAS BEEN MODIFIED IN THE 0-800 CM-1 AND 1200-2200 CM-1 RANGE BASED ON      (04 JUN 1999)
-           AERI-ER FROM SHEBA, TOBIN ET AL., 1998                                                     
-  H2O SELF HAS BEEN INCREASED IN THE 0-200 CM-1 REGION                                   (04 JUN 1999)
-  O2 COLLISION INDUCED BAND HAS BEEN ADDED  (9100 - 11000 CM-1); MLAWER ET AL. 1998      (16 AUG 1999)
-  O2 COLLISION INDUCED BAND HAS BEEN CHANGED (7555 - 8486 CM-1); MATE ET AL. 1999        (10 FEB 2000)
-  O2 COLLISION INDUCED BANDS HAVE BEEN ADDED (15000 - 29870 CM-1); GREENBLATT ET AL. 1990 (8 MAY 2000)
-  The nu2 CO2 increased by a factor of 7: based on U  Wisc. AFWEX and AERI_xr at ARM NSA   (July 2002)
-  *********   The entire water vapor continuum has been revised   *********            (December 2002)
-  *********   This continuum is based on a new line shape/collision induced formulation, mt_ckd  *** )
+                                                                                                                        
+0  *****  CONTINUA mt_ckd_1.2                                                                         
+                                                                                                                        
+                                       H2O   SELF  (T)      0 - 20000 CM-1    mt_ckd_1.0                (December 2002) 
+                                             AIR   (T)      0 - 20000 CM-1    mt_ckd_1.1                  (August 2004) 
+                                       CO2   AIR            0 - 20000 CM-1    co2 nu2 increased * 7         (July 2002) 
+                                       N2    SELF           0 -   350 CM-1    BORYSOW FROMMHOLD                         
+                                             AIR         2085 -  2670 CM-1                                 (March 1998) 
+                                       O2    AIR   (T)   1340 -  1850 CM-1                                 (March 1998) 
+                                             O2/N2       7550 -  8486 CM-1                              (February 2000) 
+                                             AIR         9100 - 11000 CM-1                                (August 1999) 
+                                             O2         15000 - 29870 CM-1                                  (May  2000) 
+                                             O2/N2      36000 -  >>>> CM-1    HERZBERG                                  
+                                       O3    AIR         9170 - 24565 CM-1    CHAPPUIS / WULF                           
+                                                   (T)  27370 - 40800 CM-1    HARTLEY HUGGINS                           
+                                                        40800 - 54000 CM-1    HARTLEY HUGGINS                           
+                                                                                                                        
+                                                                                                                        
+                                                                                                                        
+                    H2O SELF HAS BEEN REDUCED IN THE 800-1200 CM-1 REGION                                 (01 SEPT 1985)
+                    03       TEMPERATURE DEPENDENCE HAS BEEN CORRECTED                                     (01 MAY 1987)
+                    02       (1390-1760) HAS BEEN REDUCED (FACTOR = 0.78)                                (07 MARCH 1990)
+ ckd_1.0     2.2    H2O SELF HAS BEEN REDUCED IN THE 1100-1500 CM-1 REGION                               (01 APRIL 1993)
+     "              H2O FOREIGN HAS BEEN REDUCED AT ~1300 CM-1 AND IN ALL THE WINDOW REGIONS             (01 APRIL 1993)
+ ckd_2.1     3.3    H2O SELF HAS BEEN MODIFIED IN THE 700-1500 CM-1 REGION                                 (01 MAY 1994)
+     "              H2O FOREIGN HAS BEEN MODIFIED IN THE ENTIRE 1200-2200 CM-1 SPECTRAL RANGE              (01 MAY 1994)
+ ckd_2.2     3.7    H2O SELF HAS BEEN INCREASED 30% IN THE MICROWAVE REGION                                (09 FEB 1996)
+     "              N2 COLLISION INDUCED PURE ROTATION BAND ADDED                                          (09 FEB 1996)
+     "              O3 CHAPPUIS CHANGED TO VALUES FROM MODTRAN3                                            (09 FEB 1996)
+ ckd_2.2.2   3.12   INTERPOLATION EFFECTS BETWEEN HARTLEY HUGGINS DATA AROUND 40800 CM-1                  (18 SEPT 1996)
+ ckd_2.4.1   5.12   O2 COLLISION INDUCED FUNDAMENTAL BAND (1340-1850 CM-1) CHANGED TO THIBAULT ET AL., 1996 (MARCH 1998)
+     "              N2 COLLISION INDUCED FUNDAMENTAL BAND (2085-2670 CM-1) CHANGED TO LAFFERTY ET AL., 1996 (MARCH 1998)
+     "              H2O FOREIGN HAS BEEN MODIFIED IN THE 0-800 CM-1 AND 1200-2200 CM-1 RANGE BASED ON      (04 JUN 1999)
+     "                       AERI-ER FROM SHEBA, TOBIN ET AL., 1998                                                     
+     "              H2O SELF HAS BEEN INCREASED IN THE 0-200 CM-1 REGION                                   (04 JUN 1999)
+     "              O2 COLLISION INDUCED BAND HAS BEEN ADDED  (9100 - 11000 CM-1); MLAWER ET AL. 1998      (16 AUG 1999)
+     "              O2 COLLISION INDUCED BAND HAS BEEN CHANGED (7555 - 8486 CM-1); MATE ET AL. 1999        (10 FEB 2000)
+ ckd_2.4.2   5.17   O2 COLLISION INDUCED BANDS HAVE BEEN ADDED (15000 - 29870 CM-1); GREENBLATT ET AL. 1990 (8 MAY 2000)
+     "              The nu2 CO2 increased by a factor of 7: based on U  Wisc. AFWEX and AERI_xr at ARM NSA   (July 2002)
+ mt_ckd_1.00 1.00   *********   The entire water vapor continuum has been revised   *********            (December 2002)
+     "              *********   This continuum is based on a new line shape/collision induced formulation, mt_ckd  *** )
+ mt_ckd_1.1         H2O foreign modified in the 250-550 cm-1 region; results now consistent with ckd_2.4.1 (August 2004)
+ mt_ckd_1.2         Collision induced nitrogen 0-350 cm-1 increased (~1.35):  Boissoles at al., 2003    (September 2004)
+                    ----------------------------------------------------------------------------------------------------
 
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 
