@@ -76,7 +76,6 @@ c       ipts2 = same dimension as C
       real ctmp(ipts2),cself(ipts),cforeign(ipts),ch2o(ipts2)
       real ctmp2(ipts2),ctmp3(ipts2),ctmp4(ipts),ctmp5(ipts)
 
-      data icflg/-999/
 c------------------------------------
 c
       dimension xcnt(7)
@@ -94,6 +93,8 @@ C                                                                         F00120
 C
       RADCN1=2.*PLANCK*CLIGHT*CLIGHT*1.E-07                                 3070
       RADCN2=PLANCK*CLIGHT/BOLTZ                                            3080
+c
+      icflg = -999
 C
       do 1, i=1,7
          xcnt(i)=1.
@@ -210,6 +211,8 @@ c oxygen:
 c carbon dioxide:
       WK(2)  = 345.E-06  * W_dry
 
+      WK(2) = 0.
+
 c water vapor:
       if (abs(vmrh2o-1.) .lt. 1.-e-05) then
          wk(1) = wtot
@@ -222,9 +225,9 @@ c
       NMOL = 7
 c
       V1ABS =    0.
-      V2ABS = 5000. 
+      V2ABS = 10000. 
  
-      DVABS =    10.
+      DVABS =    2.
 c ..........................................................
 c      write (*,*) '  v1abs,  v2abs,  dvabs  '
 c      read  (*,*)    v1abs,  v2abs,  dvabs

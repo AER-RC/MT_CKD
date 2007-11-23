@@ -14,10 +14,31 @@ Prepared by S. A. Clough,
 
 ************************************************************************
 
+MT_CKD_2.1
+
+Date: November 2007
+
+CO2: Fundamental change in the lblrtm fourth function with consequent changes in continuum.
+Bug fix impacting the nitrogen continuum in the 0-350 cm-1 region.                   
+
+
+MT_CKD_2.0
+
+Date: September 2007
+
+CO2: Based on Hartmann P-Q-R line mixing.  Modification to v3 band based on AIRS data.   (July 2007)
+H2O foreign modified in 250-550 cm-1 region based on analyses of nsa aeri_xr data.  (September 2007)	
+
+MT_CKD_1.3
+
+Date: May 2006
+
+Nu2 CO2: with P-R line mixing included; factor of 7 increase has been reduceed to 4.5
+
+
 MT_CKD_1.2
 
 Date: 22 September 2004
-
 
 MT_CKD_1.2 includes a modification to the collision induced absorption by 
 N2 in the 0-350 cm-1 regime, Boissoles et al. (2003).
