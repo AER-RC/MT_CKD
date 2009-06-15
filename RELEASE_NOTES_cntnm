@@ -3,16 +3,31 @@
 
 Release Notes for MT_CKD
 
-
-Prepared by S. A. Clough, 
-
             AER Inc., 
             131 Harwell Avenue 
             Lexington,  MA  02421
 
-            clough@aer.com 
-
 ************************************************************************
+
+MT_CKD_2.4:  
+
+Date: June 2009
+
+Modifications to the water vapor continuum arise from new analyses of ARM measurements in the 
+microwave and far-IR regions (S.A. Clough, J. Delamere, V.H. Payne, E.J. Mlawer)
+
+- Analyses of measurements in the microwave are based primarily on the two-channel MWR (23.8 and 31.4 GHz) at SGP, 
+  with supporting evidence from 150 GHz MWRHF measurements during the COPS campaign and from 170 GHz GVRP 
+  measurements at SGP (Payne et al., 2009).
+- Measurements in the far-IR were from the AERI_ext at the NSA site, in the time surrounding and including 
+  the RHUBC-I campaign (Delamere et al., 2009).
+
+Fixed an issue with the water vapor Jacobians in which the analytic Jacobians were dependent on the starting 
+wavenumber (MT_CKD_2.3). (K.E. Cady-Pereira and S. Tjemkes)
+
+Solved the issue of N2 Jacobians being included in the Jacobians generated for other 
+molecules (MT_CKD_2.2) (S.A. Clough and M.W. Shephard)
+
 
 MT_CKD_2.1
 

@@ -7,7 +7,7 @@ C
 C
 C  --------------------------------------------------------------------------
 C |                                                                          |
-C |  Copyright 2002 - 2004, Atmospheric & Environmental Research, Inc. (AER).|
+C |  Copyright 2002 - 2009, Atmospheric & Environmental Research, Inc. (AER).|
 C |  This software may be used, copied, or redistributed as long as it is    |
 C |  not sold and this copyright notice is reproduced on each copy made.     |
 C |  This model is provided as is without any express or implied warranties. |
@@ -211,7 +211,7 @@ c oxygen:
 c carbon dioxide:
       WK(2)  = 345.E-06  * W_dry
 
-      WK(2) = 0.
+c      WK(2) = 0.
 
 c water vapor:
       if (abs(vmrh2o-1.) .lt. 1.-e-05) then
