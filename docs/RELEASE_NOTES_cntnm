@@ -1,4 +1,3 @@
- 
 ************************************************************************
 
 Release Notes for MT_CKD
@@ -15,13 +14,22 @@ Date: January 2011
     - Added ‘if’ tests needed for speed improvements in monortm (K. E. Cady-Pereira, E.J. Mlawer)
 
     - Other software updates include:
-          * Increased number of output points in all continuum modules to prevent possible truncation at high wavenumber end (E.J. Mlawer, S.A. Clough, C.H. Kohler)
-	  * Near-IR O2 continuum modified to allow for calculations over domains greater than 2000 cm-1; needed by standalone continuum code (E.J. Mlawer, P. Hedelt)
-          * O2 fundamental modified to correct 5 cm-1 shift (E.J. Mlawer, S.A. Clough, C.H. Kohler)
-          * Rayleigh is now computed for IAERSL=5 (E.J. Mlawer, K.E. Cady-Pereira)
+	* In N2 pure rotation band, fixed incorrect indexing related to contribution from N2-O2 
+	(E.J. Mlawer, A.E. Lipton, V.H. Payne)
+        * Increased number of output points in all continuum modules to prevent possible truncation at
+	high wavenumber end (E.J. Mlawer, S.A. Clough, C.H. Kohler)
+	* Near-IR O2 continuum modified to allow for calculations over domains greater than 2000 cm-1; 
+	needed by standalone continuum code (E.J. Mlawer, P. Hedelt)
+	* O2 fundamental modified to correct 5 cm-1 shift (E.J. Mlawer, S.A. Clough, C.H. Kohler)
+	* Rayleigh is now computed for IAERSL=5 (E.J. Mlawer, K.E. Cady-Pereira)
 
     - Updated historical information (E.J. Mlawer, V.H. Payne)
 
+    - Modified directory structure for source codes, makefiles, and documentation.
+
+    - Added makefile system to compile the stand-alone continuum model.  Includes new platforms such as Windows and capability to easily add new platforms. 
+
+************************************************************************
 MT_CKD_2.5.1 (AER Internal Release Only):
 
 Date: May 2010
@@ -45,7 +53,7 @@ v3 band (~2385 cm-1):
       - Modification of water vapor self continuum coefficients from 2000-3200 cm-1 from 
       IASI and AIRS measurements; fit based on near-IR studies of Bicknell et al. (2006) and 
       Fulghum and Tilleman (1991) (E.J. Mlawer and V.H. Payne)
-
+************************************************************************
 MT_CKD_2.4:  
 
 Date: June 2009
@@ -65,15 +73,15 @@ wavenumber (MT_CKD_2.3). (K.E. Cady-Pereira and S. Tjemkes)
 Solved the issue of N2 Jacobians being included in the Jacobians generated for other 
 molecules (MT_CKD_2.2) (S.A. Clough and M.W. Shephard)
 
-
+************************************************************************
 MT_CKD_2.1
 
 Date: November 2007
 
 CO2: Fundamental change in the lblrtm fourth function with consequent changes in continuum.
-Bug fix impacting the nitrogen continuum in the 0-350 cm-1 region.                   
-
-
+Bug fix impacting the nitrogen continuum in the 0-350 cm-1 region.      
+             
+************************************************************************
 MT_CKD_2.0
 
 Date: September 2007
@@ -81,13 +89,14 @@ Date: September 2007
 CO2: Based on Hartmann P-Q-R line mixing.  Modification to v3 band based on AIRS data.   (July 2007)
 H2O foreign modified in 250-550 cm-1 region based on analyses of nsa aeri_xr data.  (September 2007)	
 
+************************************************************************
 MT_CKD_1.3
 
 Date: May 2006
 
 Nu2 CO2: with P-R line mixing included; factor of 7 increase has been reduceed to 4.5
 
-
+************************************************************************
 MT_CKD_1.2
 
 Date: 22 September 2004
@@ -100,7 +109,7 @@ correlation betweem this continuum program and the continuum used in lblrtm.
 The actual continuum module, contnm.f, is introduced into the present program
 with an include statement.  The contnm.f module is that archived with lblrtm.
 
-
+************************************************************************
 MT_CKD_1.1
 
 Date: 6 August 2004
@@ -116,7 +125,7 @@ with respect to DRY air.
 The name of the output files have been modified slightly to
 WATER.coeff and CNTNM.optdpt 
 
-
+************************************************************************
 MT_CKD_1.0
 
 
