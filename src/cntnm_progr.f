@@ -226,7 +226,7 @@ c carbon dioxide:
 c      WK(2) = 0.
 
 c water vapor:
-      if (abs(vmrh2o-1.) .lt. 1.-e-05) then
+      if (abs(vmrh2o-1.) .lt. 1.e-05) then
          wk(1) = wtot
       else
          WK(1) = VMRH2O * W_dry
