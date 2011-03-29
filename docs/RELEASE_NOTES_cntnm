@@ -22,9 +22,10 @@ Date: January 2011
 	needed by standalone continuum code (E.J. Mlawer, P. Hedelt)
 	* O2 fundamental modified to correct 5 cm-1 shift (E.J. Mlawer, S.A. Clough, C.H. Kohler)
 	* Rayleigh is now computed for IAERSL=5 (E.J. Mlawer, K.E. Cady-Pereira)
-	* Corrected coding issue related to pure water vapor atmospheres (E.J. Mlawer)
 
     - Updated historical information (E.J. Mlawer, V.H. Payne)
+
+    - Corrected coding issue related to pure water vapor atmospheres in stand-alone continuum model (E.J. Mlawer).
 
     - Modified directory structure for source codes, makefiles, and documentation.
 
