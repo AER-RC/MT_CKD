@@ -13,7 +13,7 @@
 ###############################################
 
 # Search for .o and .f files in given directories
-VPATH = $(CPATH): $(CDOTO)
+VPATH = $(SRCPATH): $(OBJPATH)
 
 ###############################
 # Default
@@ -62,7 +62,7 @@ default:
 # Load line
 ###############################
 
-all : intro makedir build conclude
+all : intro makedir cleanmods build conclude
 
 ###############################
 # Intro information
@@ -84,7 +84,15 @@ intro :
 	echo '      $(SRCS)'
 	echo
 	echo
-	echo '$(OUTPUT) make in progress ...'
+	echo '      $(OBJECTS)'
+	echo
+	echo 'The object file path is as follows:'
+	echo '      $(OBJPATH)'
+	echo
+	echo 'The executable will be:'
+	echo '../$(OUTPUT)'
+	echo
+	echo 'make in progress ...'
 	echo
 
 
@@ -96,6 +104,8 @@ conclude :
 	echo
 	echo '================='
 	echo '  Makefile done'
+	echo
+	echo '../$(OUTPUT) created'
 	echo '================='
 
 ###############################
@@ -104,9 +114,9 @@ conclude :
 
 
 makedir :
-	if [ ! -d $(CDOTO) ] ; \
+	if [ ! -d $(OBJPATH) ] ; \
 	then \
-	   mkdir $(CDOTO) ; \
+	   mkdir $(OBJPATH) ; \
 	fi
 
 ###############################
@@ -114,12 +124,15 @@ makedir :
 ###############################
 
 clean:
-	-rm -rf *.o
+	-rm -rf *.o *.mod
 	-rm -rf $(PRODUCT)_*_$(VERSION)_*.obj
 	
 cleanall:
-	-rm -rf *.o
+	-rm -rf *.o *.mod
 	-rm -r *_*_$(VERSION)_*.obj
+
+cleanmods:
+	-rm -rf *.mod
 	
 #*************************************************************
 # SUN/SOLARIS OPERATING SYSTEM
@@ -134,7 +147,7 @@ sunSUNdbl:
 	PLTFRM=sun  \
 	FC=f90 \
 	FCFLAG="-xtypemap=real:64,double:64,integer:64" \
-	UTIL_FILE=util_sun.f
+	UTIL_FILE=util_sun.f90
 
 ##############################################################
 # Sun OS using sun fortran and single precision
@@ -145,7 +158,7 @@ sunSUNsgl:
 	PLTFRM=sun \
 	FC=f90 \
 	FCFLAG=-fast \
-	UTIL_FILE=util_sun.f
+	UTIL_FILE=util_sun.f90
 
 #*************************************************************
 # SGI/IRIX64 OPERATING SYSTEM
@@ -159,7 +172,7 @@ sgiMIPSdbl:
 	PLTFRM=sgi  \
 	FC=f90 \
 	FCFLAG="-mips4 -r10000 -lfastm -O3 -r8 -i8 -TENV:X=0" \
-	UTIL_FILE=util_sgi.f
+	UTIL_FILE=util_sgi.f90
 
 ##############################################################
 # SGI using MIPS fortran and single precision
@@ -169,7 +182,7 @@ sgiMIPSsgl:
 	PLTFRM=sgi  \
 	FC=f90 \
 	FCFLAG="-mips4 -r10000 -lfastm -O3 -TENV:X=0" \
-	UTIL_FILE=util_sgi.f
+	UTIL_FILE=util_sgi.f90
 
 #*************************************************************
 # LINUX OPERATING SYSTEM
@@ -183,7 +196,7 @@ linuxPGIdbl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=dbl FC_TYPE=pgi PLTFRM=linux \
 	FC=pgf90  \
 	FCFLAG="-fast -r8 -i8" \
-	UTIL_FILE=util_linux_pgi.f
+	UTIL_FILE=util_linux_pgi.f90
 
 ##############################################################
 # linux using pgi fortran and single precision
@@ -193,7 +206,7 @@ linuxPGIsgl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=sgl FC_TYPE=pgi PLTFRM=linux \
 	FC=pgf90 \
 	FCFLAG="-fast" \
-	UTIL_FILE=util_linux_pgi.f
+	UTIL_FILE=util_linux_pgi.f90
 	
 ##############################################################
 # linux using gfortran and double precision
@@ -202,8 +215,8 @@ linuxPGIsgl:
 linuxGNUdbl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=dbl FC_TYPE=gnu PLTFRM=linux \
 	FC=gfortran  \
-	FCFLAG="-fdefault-integer-8 -fdefault-real-8 -Wall -frecord-marker=4" \
-	UTIL_FILE=util_gfortran.f
+	FCFLAG="-fdefault-integer-8 -fdefault-real-8 -frecord-marker=4" \
+	UTIL_FILE=util_gfortran.f90
 
 ##############################################################
 # linux using gfortran and single precisions
@@ -212,8 +225,8 @@ linuxGNUdbl:
 linuxGNUsgl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=sgl FC_TYPE=gnu PLTFRM=linux \
 	FC=gfortran \
-	FCFLAG="-Wall -frecord-marker=4" \
-	UTIL_FILE=util_gfortran.f
+	FCFLAG="-frecord-marker=4" \
+	UTIL_FILE=util_gfortran.f90
 
 ##############################################################
 # linux using g95 and double precision
@@ -223,7 +236,7 @@ linuxG95dbl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=dbl FC_TYPE=g95 PLTFRM=linux \
 	FC=g95  \
 	FCFLAG="-O3 -r8 -i8" \
-	UTIL_FILE=util_linux_intel.f
+	UTIL_FILE=util_linux_intel.f90
 
 ##############################################################
 # linux using g95 and single precision
@@ -233,7 +246,7 @@ linuxG95sgl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=sgl FC_TYPE=g95 PLTFRM=linux \
 	FC=g95 \
 	FCFLAG="-O3" \
-	UTIL_FILE=util_linux_intel.f
+	UTIL_FILE=util_linux_intel.f90
 
 ##############################################################
 # linux using Intel Fortran and double precision
@@ -243,7 +256,7 @@ linuxINTELdbl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=dbl FC_TYPE=intel PLTFRM=linux \
 	FC=ifort  \
 	FCFLAG="-r8 -i8 -w -Vaxlib" \
-	UTIL_FILE=util_linux_intel.f
+	UTIL_FILE=util_linux_intel.f90
 
 ##############################################################
 # linux using Intel Fortran and single precision
@@ -253,7 +266,7 @@ linuxINTELsgl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=sgl FC_TYPE=intel PLTFRM=linux \
 	FC=ifort \
 	FCFLAG="-w -Vaxlib" \
-	UTIL_FILE=util_linux_intel.f
+	UTIL_FILE=util_linux_intel.f90
 
 
 #*************************************************************
@@ -269,7 +282,7 @@ osxINTELdbl:
 	PLTFRM=OS_X  \
 	FC=ifort \
 	FCFLAG="  -O3 -r8 -i8 "
-	UTIL_FILE = util_OS_X_ifort.f
+	UTIL_FILE = util_OS_X_ifort.f90
 
 
 ##############################################################
@@ -281,7 +294,7 @@ osxINTELsgl:
 	PLTFRM=OS_X \
 	FC=ifort \
 	FCFLAG=" -O3 "
-	UTIL_FILE = util_OS_X_ifort.f
+	UTIL_FILE = util_OS_X_ifort.f90
 
 
 ##############################################################
@@ -293,7 +306,7 @@ osxABSOFTdbl:
 	PLTFRM=OS_X  \
 	FC=absoft \
 	FCFLAG="-s -O -N11 -i8 -N113" \
-	UTIL_FILE=util_OS_X_absoft.f
+	UTIL_FILE=util_OS_X_absoft.f90
 
 ##############################################################
 # OSX using Absoft PRO Fortran and single precision
@@ -304,7 +317,7 @@ osxABSOFTsgl:
 	PLTFRM=OS_X \
 	FC=absoft \
 	FCFLAG="-s -O -N11 -i8 -lU77" \
-	UTIL_FILE=util_OS_X_absoft.f
+	UTIL_FILE=util_OS_X_absoft.f90
 
 ##############################################################
 # OSX using GNU Fortran and double precision
@@ -314,8 +327,8 @@ osxGNUdbl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=dbl FC_TYPE=gnu \
 	PLTFRM=OS_X  \
 	FC=gfortran \
-	FCFLAG=" -fdefault-integer-8 -fdefault-real-8 -Wall -frecord-marker=4" \
-	UTIL_FILE=util_gfortran.f
+	FCFLAG=" -fdefault-integer-8 -fdefault-real-8 -frecord-marker=4" \
+	UTIL_FILE=util_gfortran.f90
 
 ##############################################################
 # OSX using GNU Fortran and single precision
@@ -325,8 +338,8 @@ osxGNUsgl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=sgl FC_TYPE=gnu \
 	PLTFRM=OS_X \
 	FC=gfortran \
-	FCFLAG="-Wall -frecord-marker=4" \
-	UTIL_FILE=util_gfortran.f
+	FCFLAG="-frecord-marker=4" \
+	UTIL_FILE=util_gfortran.f90
 
 ##############################################################
 # OSX using IBM XL Fortran and double precision
@@ -336,8 +349,8 @@ osxIBMdbl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=dbl FC_TYPE=ibm_xl \
 	PLTFRM=OS_X  \
 	FC=xlf90 \
-	FCFLAG="-O2 -qfixed=72 -qmaxmem=-1 -qrealsize=8 -qintsize=8" \
-	UTIL_FILE=util_OS_X_ibm_xl.f
+	FCFLAG="-O2 -qfixed=f90 -qmaxmem=-1 -qrealsize=8 -qintsize=8" \
+	UTIL_FILE=util_OS_X_ibm_xl.f90
 
 ##############################################################
 # OSX using IBM XL Fortran and single precision
@@ -346,8 +359,8 @@ osxIBMsgl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=sgl FC_TYPE=ibm_xl \
 	PLTFRM=OS_X \
 	FC=xlf90 \
-	FCFLAG="-O2 -qfixed=72 -qmaxmem=-1" \
-	UTIL_FILE=util_OS_X_ibm_xl.f
+	FCFLAG="-O2 -qfixed=f90 -qmaxmem=-1" \
+	UTIL_FILE=util_OS_X_ibm_xl.f90
 
 #*************************************************************
 # WINDOWS OPERATING SYSTEM
@@ -360,8 +373,8 @@ osxIBMsgl:
 mingwGNUdbl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=dbl FC_TYPE=gnu PLTFRM=mingw \
 	FC=gfortran  \
-	FCFLAG="-fdefault-integer-8 -fdefault-real-8 -Wall -frecord-marker=4" \
-	UTIL_FILE=util_gfortran.f
+	FCFLAG="-fdefault-integer-8 -fdefault-real-8 -frecord-marker=4" \
+	UTIL_FILE=util_gfortran.f90
 
 ##############################################################
 # window unix shell environment using gfortran and single precision
@@ -370,8 +383,8 @@ mingwGNUdbl:
 mingwGNUsgl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=sgl FC_TYPE=gnu PLTFRM=mingw \
 	FC=gfortran \
-	FCFLAG="-Wall -frecord-marker=4" \
-	UTIL_FILE=util_gfortran.f
+	FCFLAG="-frecord-marker=4" \
+	UTIL_FILE=util_gfortran.f90
 
 #*************************************************************
 # IBM/AIX OPERATING SYSTEM
@@ -384,8 +397,8 @@ aixIBMdbl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=dbl FC_TYPE=ibm_xl \
 	PLTFRM=AIX  \
 	FC=xlf90 \
-	FCFLAG="-O2 -qfixed=72 -qmaxmem=-1 -qrealsize=8 -qintsize=8" \
-	UTIL_FILE=util_aix.f
+	FCFLAG="-O2 -qfixed=f90 -qmaxmem=-1 -qrealsize=8 -qintsize=8" \
+	UTIL_FILE=util_aix.f90
 
 
 ##############################################################
@@ -395,10 +408,10 @@ aixIBMsgl:
 	${MAKE} -f ${MAKEFILE} all P_TYPE=sgl FC_TYPE=ibm_xl \
 	PLTFRM=AIX \
 	FC=xlf90 \
-	FCFLAG="-O2 -qfixed=72 -qmaxmem=-1" \
-	UTIL_FILE=util_aix.f
+	FCFLAG="-O2 -qfixed=f90 -qmaxmem=-1" \
+	UTIL_FILE=util_aix.f90
 
 # Rule for compiling .o files
 
 %.o:%.f
-	$(FC) -c $(FCFLAG) -I${CPATH} $< -o ${CDOTO}/$@
+	$(FC) -c $(FCFLAG) -I${SRCPATH} $< -o ${OBJPATH}/$@
