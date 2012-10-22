@@ -460,4 +460,4 @@ C                                                                         B18460
 c*******
 c*******
 c*******
-      Include 'contnm.f'
+      Include 'contnm.f90'
