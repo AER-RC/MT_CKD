@@ -7,6 +7,14 @@ Release Notes for MT_CKD
             Lexington,  MA  02421
 
 ************************************************************************
+MT_CKD_2.7:
+
+Date: February 2016
+
+    - Added first overtone of the N2 collision induced fundamental. (E. J. Mlawer, D. Gombos)
+ 
+    - Fixed bug in calculation of temperature analytic Jacobians. (K. E. Cady-Pereira, E. J. Mlawer)
+
 MT_CKD_2.5.2:
 
 Date: January 2011
