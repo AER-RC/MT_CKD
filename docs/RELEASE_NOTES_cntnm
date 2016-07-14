@@ -7,6 +7,27 @@ Release Notes for MT_CKD
             Lexington,  MA  02421
 
 ************************************************************************
+MT_CKD_2.8:
+
+Date: July 2016
+
+    - A number of changes were made to continuum absorption involving 
+      water vapor in the window past the H2O fundamental band.  Self 
+      continuum coefficients were modified from 1880-2390 cm-1 to fix 
+      issues in the CO fundamental region that were pointed out by 
+      Alvarado et al. (2012). Foreign continuum coefficients from 
+      1800-3000 cm-1 were modified to improve agreement with Baranov 
+      and Lafferty (2012); in the 1900-2150 cm-1 region, attention 
+      was also paid to IASI measurements (Alvarado et al., 2012). 
+      Coefficients for N2-H2O relative efficiency from 2000-2900 cm-1 
+      were determined from Baranov and Lafferty simultaneously with 
+      the H2O foreign and self continuum coefficients in this 
+      region (as described above).
+
+    - In addition, foreign continuum coefficients at wavenumbers 
+      greater than 4000 cm-1 were modified based on Baranov & 
+      Lafferty (2012) and Mondelain et al. (2014) measurements.
+
 MT_CKD_2.7:
 
 Date: February 2016

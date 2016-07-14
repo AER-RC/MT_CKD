@@ -226,10 +226,10 @@
 ! carbon dioxide:
       WK(2)  = 345.E-06  * W_dry
 
-      WK(2) = 0.
+!      WK(2) = 0.
 ! ozone:
-      WK(3) = 3.75E-6 * W_dry
-
+!      WK(3) = 3.75E-6 * W_dry
+      WK(3) = 0.
 ! water vapor:
       if (abs(vmrh2o-1.) .lt. 1.e-05) then
          wk(1) = wtot
@@ -241,10 +241,10 @@
 !
       NMOL = 7
 !
-      V1ABS = 25000.
-      V2ABS = 50000. 
+      V1ABS =     0.
+      V2ABS = 10000. 
  
-      DVABS =    5.
+      DVABS =    2.
 ! ..........................................................
 !      write (*,*) '  v1abs,  v2abs,  dvabs  '
 !      read  (*,*)    v1abs,  v2abs,  dvabs
