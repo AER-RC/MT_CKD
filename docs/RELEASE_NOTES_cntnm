@@ -7,6 +7,14 @@ Release Notes for MT_CKD
             Lexington,  MA  02421
 
 ************************************************************************
+MT_CKD_3.0:
+
+Date: November 2016
+
+    - Includes modifications to continuum coefficients based on 
+      RHUBC-II study. Water vapor lines have had their widths adjusted
+      for better agreement with the REFIR instrument.
+
 MT_CKD_2.8:
 
 Date: July 2016
