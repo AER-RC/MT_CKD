@@ -11,8 +11,16 @@ MT_CKD_3.0:
 
 Date: November 2016
 
-    - Includes modifications to continuum coefficients based on 
-      RHUBC-II study.
+    - Includes modifications to H2O foreign continuum coefficients in the
+      far-infrared based on the analysis of REFIR-PAD (Bianchini and Palchetti, 2008) 
+      measurements taken at Cerro Toco, Chile, as part of the ARM RHUBC-II campaign and a 
+      re-analysis of the AERI-ER measurements from the ARM NSA site (first analyzed 
+      in Delamere et al.(2010)). The foreign continuum was also changed in the sub-
+      millimeter and microwave as a result of the analysis of SAO FTS (Paine and Turner,
+      2013) measurements taken during the RHUBC-II campaign, which led to modification 
+      of the H2O self continuum in this region to maintain good agreement with the 
+      microwave measurements analyzed in Payne et al. (2008 and 2011). (E.J. Mlawer, D.D. 
+      Turner, S.N. Paine, V.H. Payne)                                               
 
 MT_CKD_2.8:
 
@@ -34,6 +42,7 @@ Date: July 2016
     - In addition, foreign continuum coefficients at wavenumbers 
       greater than 4000 cm-1 were modified based on Baranov & 
       Lafferty (2012) and Mondelain et al. (2014) measurements.
+      (E.J. Mlawer and M.J. Alvarado)
 
 MT_CKD_2.7:
 
