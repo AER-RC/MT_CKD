@@ -7,6 +7,23 @@ Release Notes for MT_CKD
             Lexington,  MA  02421
 
 ************************************************************************
+MT_CKD_3.2
+
+Date: August 2017
+
+    - New self continnum coeffients in window regions for wavenumbers 
+      greater than 2000 cm-1 were added and self continuum temperature 
+      dependence from 1800-3500 cm-1 were updated 
+      (E.J. Mlawer, M.J. Alvarado, K.E. Cady-Pereira)
+
+LBLRTM v12.7.1
+
+Date: July 2017 (not publicly released)
+
+    - Collision-induced absorption in the oxygen A-band 
+      was added (E.J. Mlawer, D. Gombos, V.H. Payne, B. Drouin,
+      K.E. Cady-Pereira)
+
 MT_CKD_3.0:
 
 Date: November 2016
