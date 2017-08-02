@@ -13,7 +13,7 @@ include makefile.common
 # change those two variables from what is provided here, no need to set this variable.
 
 PRODUCT = cntnm
-VERSION = v3.1
+VERSION = v3.2
 
 # Set name of CNTNM executable.  
 OUTPUT = ${PRODUCT}_$(VERSION)_$(PLTFRM)_$(FC_TYPE)_$(P_TYPE)
