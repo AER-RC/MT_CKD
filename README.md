@@ -18,4 +18,4 @@ ln -s ../cntnm_v3.0_linux_pgi_dbl cntnm # assuming v3.0 was built with PGI in do
 ./cntnm (0, enter)
 ```
 
-Push 0, then enter, and `CNTNM.OPTDPT` and `WATER.COEF` will be written to working directory. These can be compared with `CNTNM.OPTDPT_mt_ckd_3.2` and `WATER.COEF_mt_ckd_3.2`, which are included in version control.
+Push 0, then enter, and `CNTNM.OPTDPT` and `WATER.COEF` will be written to working directory. These can be compared with `CNTNM.OPTDPT_mt_ckd_AER` and `WATER.COEF_mt_ckd_AER`, which are included in version control and are considered the baseline calculations. They change with every release and will be updated accordingly.
