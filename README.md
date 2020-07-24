@@ -2,6 +2,8 @@
 
 This repository contains code for the AER continuum used in [LBLRTM](https://github.com/AER-RC/LBLRTM) and as a standalone model, MT_CKD. MT_CKD is an enhancement ot the original CKD model
 
+If any build or run issues occur, please [create an issue](https://github.com/AER-RC/mt-ckd/issues) or contact the [AER-RC Group](https://github.com/AER-RC).
+
 # Cloning the Latest Release
 
 Assuming the output directory should be `mt-ckd`:
