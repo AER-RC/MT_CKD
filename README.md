@@ -23,6 +23,15 @@ Currently, the latest release is MT_CKD v3.3, and it is recommended that this be
 git checkout tags/v3.3
 ```
 
+Instead of cloning, users can also download an MT_CKD [tarball](https://github.com/AER-RC/mt-ckd/releases/tag/v3.3) and unpack it:
+
+```
+tar xvf cntnm_v3.3.tar.gz
+mv mt-ckd-3.3 cntnm
+```
+
+Though not necessary, the move to `cntnm` is for consistency with previous release packages and the associated documentation.
+
 # Building
 
 To build the continuum model:
