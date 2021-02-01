@@ -2,19 +2,19 @@
 
 This repository contains code for the AER continuum used in [LBLRTM](https://github.com/AER-RC/LBLRTM) and as a standalone model, MT_CKD. MT_CKD is an enhancement ot the original CKD model
 
-[LBLRTM](https://github.com/AER-RC/LBLRTM) uses the line parameters and [MT-CKD continuum](https://github.com/AER-RC/mt-ckd) in its calculations. The models and data are thus linked. For the latest release, the relationships are:
+[LBLRTM](https://github.com/AER-RC/LBLRTM) uses the line parameters and [MT_CKD continuum](https://github.com/AER-RC/MT_CKD) in its calculations. The models and data are thus linked. For the latest release, the relationships are:
 
 | LBLRTM Release | MT_CKD Release | Line File |
 | :---: | :---: | :---: |
-| [v12.10](https://github.com/AER-RC/LBLRTM/releases/tag/v12.10) | [v3.4](https://github.com/AER-RC/mt-ckd/releases/tag/v3.4) | [v3.8](https://zenodo.org/record/4019086/files/aer_v_3.8.tar.gz?download=1) |
+| [v12.10](https://github.com/AER-RC/LBLRTM/releases/tag/v12.10) | [v3.4](https://github.com/AER-RC/MT_CKD/releases/tag/v3.4) | [v3.8](https://zenodo.org/record/4019086/files/aer_v_3.8.tar.gz?download=1) |
 
-If any build or run issues occur, please [create an issue](https://github.com/AER-RC/mt-ckd/issues) or contact the [AER-RC Group](https://github.com/AER-RC).
+If any build or run issues occur, please [create an issue](https://github.com/AER-RC/MT_CKD/issues) or contact the [AER-RC Group](https://github.com/AER-RC).
 
 # Cloning the Latest Release
 
-Assuming the output directory should be `mt-ckd`:
+Assuming the output directory should be `MT_CKD`:
 
-`git clone --recursive git@github.com:AER-RC/mt-ckd.git`
+`git clone --recursive git@github.com:AER-RC/MT_CKD.git`
 
 `--recursive` is important, because this repository is linked with our [common FORTRAN modules repository](https://github.com/AER-RC/aer_rt_utils) that are required in the model builds. Because [LBLRTM](https://github.com/AER-RC/LBLRTM) uses the continuum, it, too, is also added as a submodule and a couple of its source files link to the LBLRTM submodule (`contnm.f90`, `lblparams.f90`, `phys_consts.f90`, and `planet_earth.f90`). If this keyword is forgotten, one can do:
 
@@ -23,7 +23,7 @@ git submodule init
 git submodule update
 ```
 
-in the `mt-ckd` directory.
+in the `MT_CKD` directory.
 
 Currently, the latest release is MT_CKD v3.4, and it is recommended that this be the version that users clone and checkout (rather than the `master` branch). To do this, one needs to simply checkout the `v3.4` tag:
 
@@ -31,11 +31,11 @@ Currently, the latest release is MT_CKD v3.4, and it is recommended that this be
 git checkout tags/v3.4
 ```
 
-Instead of cloning, users can also download an MT_CKD [tarball](https://github.com/AER-RC/mt-ckd/releases/tag/v3.4) and unpack it:
+Instead of cloning, users can also download an MT_CKD [tarball](https://github.com/AER-RC/MT_CKD/releases/tag/v3.4) and unpack it:
 
 ```
 tar xvf cntnm_v3.4.tar.gz
-mv mt-ckd-3.4 cntnm
+mv MT_CKD-3.4 cntnm
 ```
 
 Though not necessary, the move to `cntnm` is for consistency with previous release packages and the associated documentation.
@@ -45,7 +45,7 @@ Though not necessary, the move to `cntnm` is for consistency with previous relea
 To build the continuum model:
 
 ```
-cd mt-ckd/build
+cd MT_CKD/build
 make -f make_cntnm $TARGET
 ```
 
