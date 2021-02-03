@@ -6,7 +6,7 @@ This repository contains code for the AER continuum used in [LBLRTM](https://git
 
 | LBLRTM Release | MT_CKD Release | Line File |
 | :---: | :---: | :---: |
-| [v12.10](https://github.com/AER-RC/LBLRTM/releases/tag/v12.10) | [v3.4](https://github.com/AER-RC/MT_CKD/releases/tag/v3.4) | [v3.8](https://zenodo.org/record/4019086/files/aer_v_3.8.tar.gz?download=1) |
+| [v12.10](https://github.com/AER-RC/LBLRTM/releases/tag/v12.10) | [v3.5](https://github.com/AER-RC/MT_CKD/releases/tag/v3.5) | [v3.8](https://zenodo.org/record/4019086/files/aer_v_3.8.tar.gz?download=1) |
 
 If any build or run issues occur, please [create an issue](https://github.com/AER-RC/MT_CKD/issues) or contact the [AER-RC Group](https://github.com/AER-RC).
 
@@ -25,16 +25,16 @@ git submodule update
 
 in the `MT_CKD` directory.
 
-Currently, the latest release is MT_CKD v3.4, and it is recommended that this be the version that users clone and checkout (rather than the `master` branch). To do this, one needs to simply checkout the `v3.4` tag:
+Currently, the latest release is MT_CKD v3.5, and it is recommended that this be the version that users clone and checkout (rather than the `master` branch). To do this, one needs to simply checkout the `v3.5` tag:
 
 ```
-git checkout tags/v3.4
+git checkout tags/v3.5
 ```
 
-Instead of cloning, users can also download an MT_CKD [tarball](https://github.com/AER-RC/MT_CKD/releases/tag/v3.4) and unpack it:
+Instead of cloning, users can also download an MT_CKD [tarball](https://github.com/AER-RC/MT_CKD/releases/tag/v3.5) and unpack it:
 
 ```
-tar xvf cntnm_v3.4.tar.gz
+tar xvf cntnm_v3.5.tar.gz
 mv MT_CKD-3.4 cntnm
 ```
 
@@ -72,7 +72,7 @@ To run MT_CKD as a standalone program instead of in LBLRTM:
 
 ```
 cd run_example/
-ln -s ../cntnm_v3.4_linux_pgi_dbl cntnm # assuming v3.4 was built with PGI in double precision (linuxPGIdbl)
+ln -s ../cntnm_v3.5_linux_pgi_dbl cntnm # assuming v3.5 was built with PGI in double precision (linuxPGIdbl)
 ./cntnm (0, enter)
 ```
 
