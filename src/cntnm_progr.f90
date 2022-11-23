@@ -130,8 +130,6 @@
       OPEN (ipr,FILE='CNTNM.OPTDPT')
       OPEN (ipu,FILE='WATER.COEF')
 !
-      print *
-      print *, '  This version is limited to 5000 values  '
 !
 !   THIS PROGRAM CALCULATES THE CONTINUUM OPTICAL DEPTH
 !         FOR AN HOMOGENEOUS LAYER
@@ -179,14 +177,14 @@
 !
 
       PAVE = 1013.
-      TAVE =  260.
+      TAVE =  296.
 !
       VMRH2O = 0.01
 !
       xlength = 1.
 !
       print *
-      print *,' *** F      USE phys_constsor this program, vmr_h2o is taken ', &
+      print *,' *** For this program, vmr_h2o is taken ', &
        'with respect to the total column ***'
 
       print *
@@ -241,16 +239,18 @@
 !
       NMOL = 7
 !
-      V1ABS =     0.
-      V2ABS = 10000. 
+      V1ABS =    0.
+      V2ABS = 19900. 
  
-      DVABS =    2.
+      DVABS =    10.
 ! ..........................................................
 !      write (*,*) '  v1abs,  v2abs,  dvabs  '
 !      read  (*,*)    v1abs,  v2abs,  dvabs
 ! ..........................................................
 
       NPTABS =  1. + (v2abs-v1abs)/dvabs
+      print *,'v1abs,v2abs,dvabs'
+      print *,v1abs,v2abs,dvabs
 
       do 85 i=1,nptabs
          absrb(i) =0.
@@ -270,19 +270,15 @@
               8(1X,A6,3X))
   980 FORMAT (/,1P,8E10.3,//)
 !
-      jrad=1
+      jrad=0
 !
       v1 = v1abs
       v2 = v2abs
 !
       CALL CONTNM(JRAD)
 !
-      DO 100 I=1,NPTABS
-      VI=V1ABS+FLOAT(I-1)*DVABS
-100   WRITE (ipr, 910) VI, ABSRB(I) 
-910   FORMAT(F10.3,1P,E12.3)
 !
-      WRITE (7,920) tave
+      WRITE (ipu,920) tave
 
   920 FORMAT(//,' self and foreign water vapor continuum coefficients ',/, &
              'for  ',f8.2,'K - ',   //, &
@@ -305,11 +301,16 @@
          radfld=radfn(vi,xkt)
          csh2or=csh2o(i) * radfld
          cfh2or=cfh2o(i) * radfld
+         absrb(i) = absrb(i)*radfld
          write (ipu,930) vi, csh2o(i), cfh2o(i), csh2or, cfh2or
   930    format(f10.2, 1p, 2e15.4,10x, 1p, 2e15.4)
       endif
   200 continue
 !
+      DO 100 I=1,NPTABS
+      VI=V1ABS+FLOAT(I-1)*DVABS
+100   WRITE (ipr, 910) VI, ABSRB(I) 
+910   FORMAT(F10.3,1P,E12.3)
       END 
 
 !

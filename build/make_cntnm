@@ -13,7 +13,18 @@ include makefile.common
 # change those two variables from what is provided here, no need to set this variable.
 
 PRODUCT = cntnm
-VERSION = v3.6
+VERSION = v4.0.1
+
+ifeq ($(wildcard ./addlibs.inc), ./addlibs.inc)
+$(info "include  ./addlibs.inc" )
+include  ./addlibs.inc
+endif
+
+$(info "NETCDF :: $(NETCDF)" )
+
+$(info "NETCDF   :: $(NETCDF)" )
+$(info "FC       :: $(FC)" )
+$(info "PRODUCT  :: $(PRODUCT)" )
 
 # Set name of CNTNM executable.  
 OUTPUT = ${PRODUCT}_$(VERSION)_$(PLTFRM)_$(FC_TYPE)_$(P_TYPE)
@@ -28,23 +39,35 @@ SRCPATH = ../src
 
 # Files contained in src directory.  If additional .f files are added,
 # add to this list. 
-SRCS = cntnm_progr.f90 contnm.f90 lblparams.f90 phys_consts.f90 planet_earth.f90
+SRCS = cntnm_progr.f90 read_module.f90 mt_ckd_h2o_module.f90 contnm.f90 lblparams.f90 phys_consts.f90 planet_earth.f90
+
+LIB_NETCDF = $(NCL)
+INC_NETCDF = $(NCI)
+LDFLAG = -L$(LIB_NETCDF) -lnetcdff -lnetcdf $(ADDLIB)
 
 # Define makefile name
 MAKEFILE=make_$(PRODUCT)
 
-# Object file names
-OBPATH = ${SRCS:.f=.o}
+build : $(OBJPATH)/cntnm_progr.o $(OBJPATH)/read_module.o $(OBJPATH)/mt_ckd_h2o_module.o $(OBJPATH)/contnm.o $(OBJPATH)/lblparams.o $(OBJPATH)/phys_consts.o $(OBJPATH)/planet_earth.o      	
+	$(FC) $(FCFLAG) -o ../$(OUTPUT) ${OBJPATH}/*.o  $(LDFLAG)
 
-build : $(OBJPATH)/cntnm_progr.o $(OBJPATH)/contnm.o $(OBJPATH)/lblparams.o $(OBJPATH)/phys_consts.o $(OBJPATH)/planet_earth.o      	
-	$(FC) $(FCFLAG) -o ../$(OUTPUT) ${OBJPATH}/*.o
+## Define dependencies
 
-## Define dependancies
+$(OBJPATH)/read_module.o:       $(SRCPATH)/read_module.f90
+	$(FC) -c $(FCFLAG) -I$(SRCPATH) -I$(INC_NETCDF) $< -o $@
 
-$(OBJPATH)/cntnm_progr.o:   ${SRCPATH}/cntnm_progr.f90 ${SRCPATH}/contnm.f90 lblparams.mod phys_consts.mod planet_consts.mod
+$(OBJPATH)/mt_ckd_h2o_module.o: $(SRCPATH)/mt_ckd_h2o_module.f90 read_file.mod 
+	$(FC) -c $(FCDF)  $(FCFLAG) -I$(SRCPATH) $< -o $@
+
+read_file.mod:  $(SRCPATH)/read_module.f90
+	$(FC) -c $(FCFLAG) -I$(INC_NETCDF) $< -o $(OBJPATH)/read_module.o
+
+
+$(OBJPATH)/cntnm_progr.o:   ${SRCPATH}/cntnm_progr.f90 ${SRCPATH}/read_module.f90  ${SRCPATH}/mt_ckd_h2o_module.f90 ${SRCPATH}/contnm.f90 lblparams.mod phys_consts.mod planet_consts.mod
+
 	$(FC) -c $(FCFLAG) -I$(SRCPATH) $< -o $@
-$(OBJPATH)/contnm.o:	$(SRCPATH)/contnm.f90 lblparams.mod phys_consts.mod 
-	$(FC) -c $(FCFLAG) -I$(SRCPATH) $< -o $@
+$(OBJPATH)/contnm.o:	$(SRCPATH)/contnm.f90 lblparams.mod phys_consts.mod read_file.mod mt_ckd_h2o.mod
+	$(FC) -c $(FCFLAG) -I$(SRCPATH) -I$(INC_NETCDF) $< -o $@
 lblparams.mod:	$(SRCPATH)/lblparams.f90
 	$(FC) -c $(FCFLAG) $< -o $(OBJPATH)/lblparams.o
 phys_consts.mod:	$(SRCPATH)/phys_consts.f90
