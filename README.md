@@ -6,7 +6,7 @@ This repository contains code for the AER continuum used in [LBLRTM](https://git
 
 | LBLRTM Release | MT_CKD Release | Line File |
 | :---: | :---: | :---: |
-| [v12.13](https://github.com/AER-RC/LBLRTM/releases/tag/v12.13) | [v4.0.1](https://github.com/AER-RC/MT_CKD/releases/tag/v4.0.1) | [v3.8.1](https://zenodo.org/record/4019178/files/aer_v_3.8.1.tar.gz?download=1) |
+| [v12.14](https://github.com/AER-RC/LBLRTM/releases/tag/v12.14) | [4.0.1](https://github.com/AER-RC/MT_CKD/releases/tag/4.0.1) | [v3.8.1](https://zenodo.org/record/4019178/files/aer_v_3.8.1.tar.gz?download=1) |
 
 If any build or run issues occur, please [create an issue](https://github.com/AER-RC/MT_CKD/issues) or contact the [AER-RC Group](https://github.com/AER-RC).
 
