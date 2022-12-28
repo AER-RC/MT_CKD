@@ -1,10 +1,9 @@
                                                                                                                         
-                  *** CONTINUA mt_ckd_4.0                                                                               
+                  *** CONTINUA mt_ckd_4.1                                                                               
                                                                                  Most recent significant change         
-                         H2O SELF AND FOREIGN  0 - 20000 CM-1           mt_ckd_4.0 - code/data are external (Sep 2022)  
-                         H2O  SELF  (T)     0 - 20000 CM-1              mt_ckd_3.6 - power law T dependence   (Jan 2022)
-                         H2O  SELF  (T)     0 - 20000 CM-1              mt_ckd_3.5 - modify Cs,Tdep < 800 cm-1(Oct 2020)
-                              AIR           0 - 20000 CM-1              mt_ckd_3.5 - modify 0-40 cm-1         (Oct 2020)
+                         H2O  AIR         200 -   700 CM-1              mt_ckd_4.1 - adjust for self FIR mod  (Dec 2022)
+                              SELF          0 - 20000 CM-1              mt_ckd_4.0 - revise code/data external(Sep 2022)
+                              SELF  (T)     0 - 20000 CM-1              mt_ckd_3.6 - power law T dependence   (Jan 2022)
                          CO2  AIR           0 - 10000 CM-1              mt_ckd_2.5 - modify 2000-3000 cm-1    (Jan 2010)
                               AIR   (T)  2386 -  2434 CM-1              mt_ckd_2.5 - temperature dep. added   (Jan 2010)
                          N2   SELF  (T)     0 -   350 CM-1              ckd_2.2    - Borysow Fromhold         (Feb 1996)
@@ -76,8 +75,10 @@ Continuum    LBL_n                      Description of Modification             
  mt_ckd_3.5  12.11  H2O self: MW - Payne et al. 2021 MWR study, FIR - Odintsova et al. 2020; self T: MW -     (Oct 2020)
      "              Payne et al., Katkov et al. 1995, and Tretyakov et al. 2016, FIR - Odintsova et al. and             
      "              Burch/Grynvak 1979, IR - Burch/Alt 1984 and Burch/Grynvak; H2O foreign: MW - Payne et al.           
- mt_ckd_3.6  12.13  Water vapor self continuum temperature dependencecomputed as a power law (Mlawer,Mascio)  (June 2022
- mt_ckd_4.0         Water vapor continuum code/data now external      (Cady-Pereira/Mlawer)                   (Sep 2022)
+ mt_ckd_3.6  12.13  Water vapor self continuum temperature dependencecomputed as a power law (Mlawer, Mascio) (Jun 2022)
+ mt_ckd_4.0  12.14  Water vapor continuum code/data now external (Cady-Pereira/Mlawer)                        (Sep 2022)
+ mt_ckd_4.0.1       Added changes to handle negative frequencies for water vapor continuum                    (Nov 2022)
+ mt_ckd_4.1  12.15  Revised foreign H2O continuum in far-IR to adjustfor v3.5 changes to self (Mlawer, Mascio)(Dec 2022)
 
                              P(MB)       T(K)
 
