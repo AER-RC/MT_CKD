@@ -1,4 +1,3 @@
-# $Revision: 31661 $
 # Makefile for cntnm
 # From cntnm/build directory, type: gmake -f make_cntnm <TARGET>
 
@@ -13,7 +12,7 @@ include makefile.common
 # change those two variables from what is provided here, no need to set this variable.
 
 PRODUCT = cntnm
-VERSION = v4.0.1
+VERSION = v4.1.1
 
 ifeq ($(wildcard ./addlibs.inc), ./addlibs.inc)
 $(info "include  ./addlibs.inc" )
