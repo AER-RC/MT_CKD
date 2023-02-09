@@ -1,10 +1,9 @@
                                                                                                                         
-                  *** CONTINUA mt_ckd_4.0                                                                               
+                  *** CONTINUA mt_ckd_4.1                                                                               
                                                                                  Most recent significant change         
-                         H2O SELF AND FOREIGN  0 - 20000 CM-1           mt_ckd_4.0 - code/data are external (Sep 2022)  
-                         H2O  SELF  (T)     0 - 20000 CM-1              mt_ckd_3.6 - power law T dependence   (Jan 2022)
-                         H2O  SELF  (T)     0 - 20000 CM-1              mt_ckd_3.5 - modify Cs,Tdep < 800 cm-1(Oct 2020)
-                              AIR           0 - 20000 CM-1              mt_ckd_3.5 - modify 0-40 cm-1         (Oct 2020)
+                         H2O  AIR         200 -   700 CM-1              mt_ckd_4.1 - adjust for self FIR mod  (Dec 2022)
+                              SELF          0 - 20000 CM-1              mt_ckd_4.0 - revise code/data external(Sep 2022)
+                              SELF  (T)     0 - 20000 CM-1              mt_ckd_3.6 - power law T dependence   (Jan 2022)
                          CO2  AIR           0 - 10000 CM-1              mt_ckd_2.5 - modify 2000-3000 cm-1    (Jan 2010)
                               AIR   (T)  2386 -  2434 CM-1              mt_ckd_2.5 - temperature dep. added   (Jan 2010)
                          N2   SELF  (T)     0 -   350 CM-1              ckd_2.2    - Borysow Fromhold         (Feb 1996)
@@ -76,8 +75,10 @@ Continuum    LBL_n                      Description of Modification             
  mt_ckd_3.5  12.11  H2O self: MW - Payne et al. 2021 MWR study, FIR - Odintsova et al. 2020; self T: MW -     (Oct 2020)
      "              Payne et al., Katkov et al. 1995, and Tretyakov et al. 2016, FIR - Odintsova et al. and             
      "              Burch/Grynvak 1979, IR - Burch/Alt 1984 and Burch/Grynvak; H2O foreign: MW - Payne et al.           
- mt_ckd_3.6  12.13  Water vapor self continuum temperature dependencecomputed as a power law (Mlawer,Mascio)  (June 2022
- mt_ckd_4.0         Water vapor continuum code/data now external      (Cady-Pereira/Mlawer)                   (Sep 2022)
+ mt_ckd_3.6  12.13  Water vapor self continuum temperature dependencecomputed as a power law (Mlawer, Mascio) (Jun 2022)
+ mt_ckd_4.0  12.14  Water vapor continuum code/data now external (Cady-Pereira/Mlawer)                        (Sep 2022)
+ mt_ckd_4.0.1       Added changes to handle negative frequencies for water vapor continuum                    (Nov 2022)
+ mt_ckd_4.1  12.15  Revised foreign H2O continuum in far-IR to adjustfor v3.5 changes to self (Mlawer, Mascio)(Dec 2022)
 
                              P(MB)       T(K)
 
@@ -113,49 +114,49 @@ Continuum    LBL_n                      Description of Modification             
    200.000   5.488E-04
    210.000   4.981E-04
    220.000   4.483E-04
-   230.000   3.869E-04
-   240.000   3.218E-04
-   250.000   2.837E-04
-   260.000   2.549E-04
-   270.000   2.383E-04
-   280.000   2.088E-04
-   290.000   1.827E-04
-   300.000   1.557E-04
-   310.000   1.309E-04
-   320.000   1.228E-04
-   330.000   1.052E-04
-   340.000   8.632E-05
-   350.000   7.335E-05
-   360.000   6.118E-05
-   370.000   5.102E-05
-   380.000   4.421E-05
-   390.000   3.797E-05
-   400.000   3.235E-05
-   410.000   2.998E-05
-   420.000   2.716E-05
-   430.000   2.525E-05
-   440.000   2.341E-05
-   450.000   2.096E-05
-   460.000   1.914E-05
-   470.000   1.781E-05
-   480.000   1.615E-05
-   490.000   1.455E-05
-   500.000   1.312E-05
-   510.000   1.219E-05
-   520.000   1.113E-05
-   530.000   1.009E-05
-   540.000   9.109E-06
-   550.000   8.310E-06
-   560.000   7.550E-06
-   570.000   6.842E-06
-   580.000   6.136E-06
-   590.000   5.544E-06
-   600.000   5.091E-06
-   610.000   4.694E-06
-   620.000   4.372E-06
-   630.000   4.327E-06
-   640.000   4.848E-06
-   650.000   7.665E-06
+   230.000   3.879E-04
+   240.000   3.232E-04
+   250.000   2.849E-04
+   260.000   2.561E-04
+   270.000   2.385E-04
+   280.000   2.099E-04
+   290.000   1.838E-04
+   300.000   1.562E-04
+   310.000   1.323E-04
+   320.000   1.235E-04
+   330.000   1.059E-04
+   340.000   8.693E-05
+   350.000   7.390E-05
+   360.000   6.170E-05
+   370.000   5.152E-05
+   380.000   4.465E-05
+   390.000   3.840E-05
+   400.000   3.325E-05
+   410.000   3.085E-05
+   420.000   2.791E-05
+   430.000   2.595E-05
+   440.000   2.397E-05
+   450.000   2.154E-05
+   460.000   1.966E-05
+   470.000   1.827E-05
+   480.000   1.658E-05
+   490.000   1.494E-05
+   500.000   1.353E-05
+   510.000   1.250E-05
+   520.000   1.142E-05
+   530.000   1.035E-05
+   540.000   9.345E-06
+   550.000   8.524E-06
+   560.000   7.753E-06
+   570.000   7.027E-06
+   580.000   6.306E-06
+   590.000   5.687E-06
+   600.000   5.215E-06
+   610.000   4.787E-06
+   620.000   4.454E-06
+   630.000   4.397E-06
+   640.000   4.881E-06
+   650.000   7.680E-06
    660.000   1.046E-05
    670.000   1.130E-05
    680.000   9.652E-06
