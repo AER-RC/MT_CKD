@@ -1,7 +1,7 @@
                                                                                                                         
-                  *** CONTINUA mt_ckd_4.1                                                                               
+                  *** CONTINUA mt_ckd_4.1.1                                                                             
                                                                                  Most recent significant change         
-                         H2O  AIR         200 -   700 CM-1              mt_ckd_4.1 - adjust for self FIR mod  (Dec 2022)
+                         H2O  AIR         200 -   700 CM-1              mt_ckd_4.1.1 - adjust for self FIR mod(Jan 2023)
                               SELF          0 - 20000 CM-1              mt_ckd_4.0 - revise code/data external(Sep 2022)
                               SELF  (T)     0 - 20000 CM-1              mt_ckd_3.6 - power law T dependence   (Jan 2022)
                          CO2  AIR           0 - 10000 CM-1              mt_ckd_2.5 - modify 2000-3000 cm-1    (Jan 2010)
@@ -79,6 +79,7 @@ Continuum    LBL_n                      Description of Modification             
  mt_ckd_4.0  12.14  Water vapor continuum code/data now external (Cady-Pereira/Mlawer)                        (Sep 2022)
  mt_ckd_4.0.1       Added changes to handle negative frequencies for water vapor continuum                    (Nov 2022)
  mt_ckd_4.1  12.15  Revised foreign H2O continuum in far-IR to adjustfor v3.5 changes to self (Mlawer, Mascio)(Dec 2022)
+ mt_ckd_4.1.1       Minor changes to MT_CKD_4.1 and MT_CKD_H2O_4.1                                            (Jan 2023)
 
                              P(MB)       T(K)
 
@@ -105,7 +106,7 @@ for    296.00K -
     cm-1         1/(cm-1 molec/cm**2)                     1/(molec/cm**2) 
 
 
-      0.00     0.0000E+00     0.0000E+00               0.0000E+00     0.0000E+00
+      0.00     2.8770E-21     8.5629E-23               0.0000E+00     0.0000E+00
      10.00     2.8550E-21     8.8278E-23               6.9373E-22     2.1451E-23
      20.00     2.7310E-21     9.1821E-23               2.6528E-21     8.9193E-23
      30.00     2.4900E-21     9.7960E-23               5.4368E-21     2.1389E-22
@@ -135,9 +136,9 @@ for    296.00K -
     270.00     1.1390E-22     5.1719E-24               1.7708E-20     8.0409E-22
     280.00     9.9130E-23     4.2202E-24               1.6428E-20     6.9935E-22
     290.00     8.6390E-23     3.4274E-24               1.5217E-20     6.0374E-22
-    300.00     7.5440E-23     2.6484E-24               1.4089E-20     4.9461E-22
-    310.00     6.6030E-23     2.1227E-24               1.3043E-20     4.1929E-22
-    320.00     5.7940E-23     1.8249E-24               1.2077E-20     3.8040E-22
+    300.00     7.5440E-23     2.6859E-24               1.4089E-20     5.0160E-22
+    310.00     6.6030E-23     2.0959E-24               1.3043E-20     4.1399E-22
+    320.00     5.7940E-23     1.8581E-24               1.2077E-20     3.8732E-22
     330.00     5.0960E-23     1.4759E-24               1.1186E-20     3.2397E-22
     340.00     4.4950E-23     1.1005E-24               1.0369E-20     2.5388E-22
     350.00     3.9740E-23     8.5883E-25               9.6166E-21     2.0783E-22

@@ -1,7 +1,7 @@
                                                                                                                         
-                  *** CONTINUA mt_ckd_4.1                                                                               
+                  *** CONTINUA mt_ckd_4.1.1                                                                             
                                                                                  Most recent significant change         
-                         H2O  AIR         200 -   700 CM-1              mt_ckd_4.1 - adjust for self FIR mod  (Dec 2022)
+                         H2O  AIR         200 -   700 CM-1              mt_ckd_4.1.1 - adjust for self FIR mod(Jan 2023)
                               SELF          0 - 20000 CM-1              mt_ckd_4.0 - revise code/data external(Sep 2022)
                               SELF  (T)     0 - 20000 CM-1              mt_ckd_3.6 - power law T dependence   (Jan 2022)
                          CO2  AIR           0 - 10000 CM-1              mt_ckd_2.5 - modify 2000-3000 cm-1    (Jan 2010)
@@ -79,6 +79,7 @@ Continuum    LBL_n                      Description of Modification             
  mt_ckd_4.0  12.14  Water vapor continuum code/data now external (Cady-Pereira/Mlawer)                        (Sep 2022)
  mt_ckd_4.0.1       Added changes to handle negative frequencies for water vapor continuum                    (Nov 2022)
  mt_ckd_4.1  12.15  Revised foreign H2O continuum in far-IR to adjustfor v3.5 changes to self (Mlawer, Mascio)(Dec 2022)
+ mt_ckd_4.1.1       Minor changes to MT_CKD_4.1 and MT_CKD_H2O_4.1                                            (Jan 2023)
 
                              P(MB)       T(K)
 
@@ -121,9 +122,9 @@ Continuum    LBL_n                      Description of Modification             
    270.000   2.385E-04
    280.000   2.099E-04
    290.000   1.838E-04
-   300.000   1.545E-04
-   310.000   1.336E-04
-   320.000   1.218E-04
+   300.000   1.562E-04
+   310.000   1.323E-04
+   320.000   1.235E-04
    330.000   1.059E-04
    340.000   8.693E-05
    350.000   7.390E-05
