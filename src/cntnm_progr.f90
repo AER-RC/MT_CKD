@@ -1,11 +1,5 @@
-!     path:      $Source$
-!     author:    $Author: jdelamer $
-!     revision:  $Revision: 11007 $
-!     created:   $Date: 2011-03-29 16:16:57 -0400 (Tue, 29 Mar 2011) $
-! 
-!
 !  --------------------------------------------------------------------------
-! |  Copyright ©, Atmospheric and Environmental Research, Inc., 2011         |
+! |  Copyright ©, Atmospheric and Environmental Research, Inc., 2023         |
 ! |                                                                          |
 ! |  All rights reserved. This source code is part of the MT_CKD continuum   |
 ! |  software and is designed for scientific and research purposes.          |
@@ -20,7 +14,7 @@
 ! |                                                                          |
 ! |  This software is provided as is without any express or implied          |
 ! |  warranties.                                                             |
-! |                       (http://www.rtweb.aer.com/)                        |
+! |                       (http://github.com/AER-RC)                        |
 !  --------------------------------------------------------------------------
 !
                   PROGRAM DRCNTNM
@@ -169,9 +163,9 @@
 !
 !
       iprcnt = ipr
-                   CALL PRCNTM 
+                    CALL PRCNTM 
       iprcnt = ipu
-                   CALL PRCNTM
+                    CALL PRCNTM
 !
 !   THE FOLLOWING IS AN EXAMPLE FOR A ONE CM PATH (SEE CNTNM.OPTDPT FOR RESULTS)
 !
@@ -239,7 +233,7 @@
 !
       NMOL = 7
 !
-      V1ABS =    0.
+      V1ABS =     0.
       V2ABS = 19900. 
  
       DVABS =    10.
@@ -278,20 +272,21 @@
       CALL CONTNM(JRAD)
 !
 !
-      WRITE (ipu,920) tave
+      WRITE (7,920) tave
 
-  920 FORMAT(//,' self and foreign water vapor continuum coefficients ',/, &
-             'for  ',f8.2,'K - ',   //, &
-             ' the self-continuum scales as ( Rself/Ro ) ',/, &
-             ' the foreign continuum scales as ( (Rtot-Rself)/Ro ) ',/, &
-             ' where R is the density rho [ R = (P/Po)*(To/T) ]. ',//,  &
+  920 FORMAT(' Self and foreign water vapor continuum coefficients ', &
+             'for',f8.2,'K : ',   //, &
+             ' The self-continuum scales as ( Rself/Ro ), and ',/, &
+             '   the foreign continuum scales as ( (Rtot-Rself)/Ro ), ',/, &
+             '   where R is the density rho [ R = (P/Po)*(To/T) ]. ',/, &
+             ' Reference density Ro corresponds to 296K & 1013mb',//, &
          10x,'     without radiation field:  ',  &
          10x,'       with radiation field:   ',      /, &
          10x,'      self         foreign     ', &
          10x,'      self         foreign     ',      /, &
              '    cm-1  ',                     &
-             '       1/(cm-1 molec/cm**2)    ', &
-         10x,'       1/(molec/cm**2) '        ,//) 
+             '        (cm**2/molec) cm-1     ', &
+         10x,'         cm**2/molec '        ,//) 
 !
       xkt=tave/radcn2
 
@@ -311,7 +306,7 @@
       VI=V1ABS+FLOAT(I-1)*DVABS
 100   WRITE (ipr, 910) VI, ABSRB(I) 
 910   FORMAT(F10.3,1P,E12.3)
-      END 
+  END 
 
 !
       BLOCK DATA                                                          !A07600
