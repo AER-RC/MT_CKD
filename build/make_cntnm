@@ -13,7 +13,7 @@ include makefile.common
 # change those two variables from what is provided here, no need to set this variable.
 
 PRODUCT = cntnm
-VERSION = v4.1.1
+VERSION = v4.2
 
 ifeq ($(wildcard ./addlibs.inc), ./addlibs.inc)
 $(info "include  ./addlibs.inc" )
