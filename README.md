@@ -6,7 +6,7 @@ This repository contains code for the AER continuum used in [LBLRTM](https://git
 
 | LBLRTM Release | MT_CKD Release | Line File |
 | :---: | :---: | :---: |
-| [v12.16](https://github.com/AER-RC/LBLRTM/releases/tag/v12.16) | [4.2](https://github.com/AER-RC/MT_CKD/releases/tag/4.2) | [v3.8.1](https://zenodo.org/record/4019178/files/aer_v_3.8.1.tar.gz?download=1) |
+| [v12.17](https://github.com/AER-RC/LBLRTM/releases/tag/v12.17) | [4.3](https://github.com/AER-RC/MT_CKD/releases/tag/4.3) | [v3.8.1](https://zenodo.org/record/4019178/files/aer_v_3.8.1.tar.gz?download=1) |
 
 If any build or run issues occur, please [create an issue](https://github.com/AER-RC/MT_CKD/issues) or contact the [AER-RC Group](https://github.com/AER-RC).
 
@@ -25,17 +25,17 @@ git submodule update
 
 in the `MT_CKD` directory.
 
-Currently, the latest release is MT_CKD_4.2, and it is recommended that this be the version that users clone and checkout (rather than the `master` branch). To do this, one needs to simply checkout the `4.2` tag:
+Currently, the latest release is MT_CKD_4.3, and it is recommended that this be the version that users clone and checkout (rather than the `master` branch). To do this, one needs to simply checkout the `4.3` tag:
 
 ```
-git checkout tags/4.2
+git checkout tags/4.3
 ```
 
-Instead of cloning, users can also download an MT_CKD [tarball](https://github.com/AER-RC/MT_CKD/releases/tag/4.2) and unpack it:
+Instead of cloning, users can also download an MT_CKD [tarball](https://github.com/AER-RC/MT_CKD/releases/tag/4.3) and unpack it:
 
 ```
-tar xvf cntnm_4.2.tar.gz
-mv MT_CKD-4.2 cntnm
+tar xvf cntnm_4.3.tar.gz
+mv MT_CKD-4.3 cntnm
 ```
 
 Though not necessary, the move to `cntnm` is for consistency with previous release packages and the associated documentation.
@@ -72,7 +72,7 @@ To run MT_CKD as a standalone program instead of in LBLRTM:
 
 ```
 cd run_example/
-ln -s ../cntnm_v4.2_linux_pgi_dbl cntnm # assuming v4.2 was built with PGI in double precision (linuxPGIdbl)
+ln -s ../cntnm_v4.3_linux_pgi_dbl cntnm # assuming v4.3 was built with PGI in double precision (linuxPGIdbl)
 ./cntnm (0, enter)
 ```
 
